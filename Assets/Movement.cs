@@ -4,26 +4,40 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public CharacterController controller;
+	public Rigidbody rb;
+	private Vector3 input;
 
-    public float speed = 5f;
+	private float speed = 6f;
 
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
+	void Update()
+	{
+		GatherInput();
+		LookInDirection();
+	}
 
-    void Update()
-    {
-       float horizontal = Input.GetAxisRaw("Horizontal");
-       float vertical = Input.GetAxisRaw("Vertical");
-       Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+	void FixedUpdate(){
+		Move();
+	}
 
-       if (direction.magnitude >= 0.1f)
-       {
-           float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-           float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-           transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+	void GatherInput(){
+		input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+	}
 
-           controller.Move(direction * speed * Time.deltaTime);
-       }
-    }
+	void LookInDirection(){
+		if(input != Vector3.zero)
+		{
+
+		
+			var relative = (transform.position + input) - transform.position;
+			var rot = Quaternion.LookRotation(relative,Vector3.up);
+
+			transform.rotation = rot;
+		}
+	}
+
+	void Move(){
+
+		rb.MovePosition(transform.position + (transform.forward * input.magnitude) * speed * Time.deltaTime);
+	}
+
 }
