@@ -8,6 +8,8 @@ public class Movement : MonoBehaviour
 	private float speed = 12;
 	private Vector3 input;
 
+	public bool flipped = false;
+
 	void FixedUpdate()
 	{
 		GatherInput();
@@ -17,7 +19,15 @@ public class Movement : MonoBehaviour
 
 	void GatherInput()
 	{
-		input = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
+		if (flipped == true)
+		{
+			input = new Vector3(-Input.GetAxisRaw("Horizontal"),0,-Input.GetAxisRaw("Vertical")).normalized;
+		}
+		else
+		{
+			input = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
+		}
+		//input = new Vector3(Input.GetAxisRaw("Vertical"),0,Input.GetAxisRaw("Horizontal")).normalized;
 	}
 
 	void Look()

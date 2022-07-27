@@ -32,6 +32,7 @@ public class Camerachange : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             if (CameraSwitcher.ActiveCamera != cam) CameraSwitcher.SwitchCamera(cam);
+
         }
     }
 }
