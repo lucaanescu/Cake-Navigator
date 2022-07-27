@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
@@ -13,7 +11,7 @@ public class Camerachange : MonoBehaviour
     BoxCollider box;
     Rigidbody rb;
 
-    void Awake()
+    private void Awake()
     {
         box = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
@@ -23,7 +21,7 @@ public class Camerachange : MonoBehaviour
         rb.isKinematic = true;
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, boxSize);
