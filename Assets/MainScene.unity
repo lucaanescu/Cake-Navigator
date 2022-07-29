@@ -151,7 +151,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3490566, g: 0.11690104, b: 0.20882964, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -371,6 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sky1: {fileID: 2100000, guid: 9967e2556babf134b9f8c316bc4547a0, type: 2}
   Sky2: {fileID: 2100000, guid: 64b1883f091145343992703cd83ee670, type: 2}
+  sky1: 1
+  sky2: 0
 --- !u!1 &439942933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1081,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1070875103}
-  m_LocalRotation: {x: -0.020845648, y: 0.97879773, z: -0.15681684, w: -0.13011149}
+  m_LocalRotation: {x: -0.020845652, y: 0.97879773, z: -0.15681683, w: -0.13011153}
   m_LocalPosition: {x: -90.2, y: 80.5, z: 178.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
