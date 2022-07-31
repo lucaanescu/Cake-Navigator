@@ -39,26 +39,35 @@ public class LightManager : MonoBehaviour
 			{
 				timeleft -= Time.deltaTime;
 				Time.timeScale = 0.01f;
-				Fade.alpha += Time.deltaTime;
 
-				if(timeleft < 0.01f && sky2 == false)
+				if(timeleft < 0f && sky2 == false)
 				{
-					
+					if(timeleft <= 0.01f)
+					{
+						Fade.alpha = 1f;
+						Fade.alpha += Time.deltaTime;
+					}
 					sky2 = true;
 					light1.enabled = true;
 					light2.enabled = false;
 					sky1 = false;
 					RenderSettings.skybox = Sky2;
+					
 
 				}
-				else if(timeleft < 0.01f && sky2 == true)
+				else if(timeleft < 0f && sky2 == true)
 				{
+					if(timeleft <= 0.01f)
+					{
+						Fade.alpha = 1f;
+						Fade.alpha += Time.deltaTime;
+					}
 					sky2 = false;
 					light1.enabled = false;
 					light2.enabled = true;
 					sky1 = true;
 					RenderSettings.skybox = Sky1;
-
+					
 				}
 			}
 		if(timeleft <= 0f)

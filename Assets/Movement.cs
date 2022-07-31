@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
 		GatherInput();
 		Look();
 		Move();
+		Jump();
 	}
 
 	void GatherInput()
@@ -27,7 +28,6 @@ public class Movement : MonoBehaviour
 		{
 			input = new Vector3(Input.GetAxisRaw("Horizontal"),0,Input.GetAxisRaw("Vertical")).normalized;
 		}
-		//input = new Vector3(Input.GetAxisRaw("Vertical"),0,Input.GetAxisRaw("Horizontal")).normalized;
 	}
 
 	void Look()
@@ -47,5 +47,13 @@ public class Movement : MonoBehaviour
 
 	void Move(){
 		rb.MovePosition(transform.position + (transform.forward * input.magnitude).normalized * speed * Time.deltaTime);
+	}
+
+	void Jump()
+	{
+		if(Input.GetButtonDown("Jump"))
+		{
+			rb.AddForce(new Vector3(0,5,0), ForceMode.Impulse);
+		}
 	}
 }
